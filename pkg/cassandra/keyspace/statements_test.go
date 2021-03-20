@@ -1,4 +1,4 @@
-package cassandra
+package keyspace
 
 import "testing"
 
@@ -53,13 +53,13 @@ func TestUpdateStatement(t *testing.T) {
 			ExpectedStatement: "ALTER KEYSPACE user WITH DURABLE_WRITES = false;",
 		},
 		{
-			OldKeyspace: &keyspace1,
-			NewKeyspace: &keyspace3,
+			OldKeyspace:       &keyspace1,
+			NewKeyspace:       &keyspace3,
 			ExpectedStatement: "ALTER KEYSPACE user WITH REPLICATION = { class = 'NetworkTopologyStrategy' } AND DURABLE_WRITES = false;",
 		},
 		{
-			OldKeyspace: &keyspace3,
-			NewKeyspace: &keyspace2,
+			OldKeyspace:       &keyspace3,
+			NewKeyspace:       &keyspace2,
 			ExpectedStatement: "ALTER KEYSPACE user WITH REPLICATION = { class = 'SimpleStrategy' };",
 		},
 	}

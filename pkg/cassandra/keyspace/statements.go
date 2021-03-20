@@ -1,16 +1,10 @@
-package cassandra
+package keyspace
 
 import (
 	"bytes"
 	"strings"
 	"text/template"
 )
-
-type Keyspace struct {
-	Name          string `hcl:"name"`
-	DurableWrites bool   `hcl:"durable_writes"`
-	Replication   string `hcl:"replication"`
-}
 
 func CreateStatement(keyspace *Keyspace) (string, error) {
 
